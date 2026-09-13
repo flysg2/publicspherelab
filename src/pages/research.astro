@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { researchAreas } from "../data/research.js";
+---
+
+<Layout title="Research | Public Sphere Lab">
+	<main>
+
+		<section class="research-hero">
+			<h1>Research</h1>
+
+			<p class="research-intro">
+				We study how communication shapes public understanding,
+				collective judgment, and social interaction across changing
+				media and technological environments.
+			</p>
+		</section>
+
+		<section class="research-areas">
+			{
+				researchAreas.map((area) => (
+					<article class="research-area">
+						<h2>
+							<span class="research-number">{area.number}</span>
+							{area.title}
+						</h2>
+
+						<p>{area.description}</p>
+					</article>
+				))
+			}
+		</section>
+
+	</main>
+</Layout>
+
+<style>
+	.research-hero {
+		padding: 12vh 6vw 10vh;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.research-hero h1 {
+		font-size: clamp(64px, 7vw, 110px);
+		line-height: 1.1;
+		letter-spacing: -0.05em;
+		margin: 0 0 45px;
+	}
+
+	.research-intro {
+		font-size: clamp(22px, 2vw, 30px);
+		line-height: 1.55;
+		max-width: 950px;
+		margin: 0;
+	}
+
+	.research-areas {
+		padding: 0 6vw;
+	}
+
+	.research-area {
+		padding: 75px 0 80px;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.research-area h2 {
+		display: flex;
+		align-items: baseline;
+		gap: 28px;
+		font-size: clamp(36px, 4vw, 58px);
+		line-height: 1.15;
+		letter-spacing: -0.035em;
+		margin: 0 0 30px;
+		max-width: 1000px;
+	}
+
+	.research-number {
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 0;
+		flex: 0 0 auto;
+	}
+
+	.research-area p {
+		font-size: 19px;
+		line-height: 1.7;
+		max-width: 780px;
+		margin: 0 0 0 58px;
+	}
+
+	@media (max-width: 600px) {
+		.research-hero {
+			padding: 8vh 6vw;
+		}
+
+		.research-hero h1 {
+			font-size: 52px;
+			margin-bottom: 30px;
+		}
+
+		.research-intro {
+			font-size: 20px;
+		}
+
+		.research-area {
+			padding: 55px 0 60px;
+		}
+
+		.research-area h2 {
+			font-size: 34px;
+			gap: 16px;
+			margin-bottom: 25px;
+		}
+
+		.research-number {
+			font-size: 16px;
+		}
+
+		.research-area p {
+			font-size: 17px;
+			margin-left: 0;
+		}
+	}
+</style>

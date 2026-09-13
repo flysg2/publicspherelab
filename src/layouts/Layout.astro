@@ -1,0 +1,47 @@
+---
+const { title = "Public Sphere Lab | KAIST" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+	</head>
+
+	<body>
+		<header>
+			<a href="/" class="logo">Public Sphere Lab</a>
+
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/people">People</a>
+				<a href="/research">Research</a>
+				<a href="/publications">Publications</a>
+				<a href="/news">News</a>
+				<a href="/contact">Contact</a>
+			</nav>
+		</header>
+
+		<slot />
+
+		<footer>
+			<div>
+				<p class="footer-logo">Public Sphere Lab</p>
+				<p>KAIST</p>
+			</div>
+
+			<div>
+				<p>Communication, Technology,</p>
+				<p>and the Public Sphere</p>
+			</div>
+
+			<div>
+				<a href="/contact">Contact</a>
+				<p>© 2026 Public Sphere Lab</p>
+			</div>
+		</footer>
+	</body>
+</html>

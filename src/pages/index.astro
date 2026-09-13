@@ -1,0 +1,424 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { publications } from "../data/publications.js";
+import { news } from "../data/news.js";
+import { researchAreas } from "../data/research.js";
+
+const selectedPublications = publications.slice(0, 3);
+
+const latestNews = [...news]
+	.sort((a, b) => b.date.localeCompare(a.date))
+	.slice(0, 3);
+---
+
+<Layout title="Public Sphere Lab | KAIST">
+	<main>
+
+		<section class="hero">
+			<p class="eyebrow">PUBLIC SPHERE LAB · KAIST</p>
+
+			<h1>Public Sphere Lab</h1>
+
+			<p class="hero-copy">
+				Communication, Technology, and the Public Sphere
+			</p>
+		</section>
+
+
+		<section class="section about">
+			<div class="section-label">
+				<p>01</p>
+				<p>About the Lab</p>
+			</div>
+
+			<div class="section-content">
+				<h2>
+					We study how communication shapes public life.
+				</h2>
+
+				<p class="large-copy">
+					Public Sphere Lab investigates communication,
+					technology, and the institutions through which
+					publics understand, discuss, and respond to
+					issues of collective importance.
+				</p>
+
+				<a href="/about" class="text-link">
+					Learn more →
+				</a>
+			</div>
+		</section>
+
+
+		<section class="section">
+			<div class="section-label">
+				<p>02</p>
+				<p>Research Areas</p>
+			</div>
+
+			<div class="section-content">
+				<div class="research-grid">
+					{
+						researchAreas.map((area) => (
+							<article>
+								<p class="number">{area.number}</p>
+
+								<h3>{area.title}</h3>
+
+								<p>{area.short}</p>
+							</article>
+						))
+					}
+				</div>
+
+				<a href="/research" class="text-link">
+					Explore research →
+				</a>
+			</div>
+		</section>
+
+
+		<section class="section dark-section">
+			<div class="section-label">
+				<p>03</p>
+				<p>Latest News</p>
+			</div>
+
+			<div class="section-content">
+				<div class="news-list">
+					{
+						latestNews.map((item) => (
+							<a
+								href={item.url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<span>{item.date}</span>
+
+								<strong>{item.title}</strong>
+
+								<span>→</span>
+							</a>
+						))
+					}
+				</div>
+
+				<a href="/news" class="text-link light-link">
+					All news →
+				</a>
+			</div>
+		</section>
+
+
+		<section class="section">
+			<div class="section-label">
+				<p>04</p>
+				<p>Selected Publications</p>
+			</div>
+
+			<div class="section-content">
+				<div class="publication-list">
+
+					{
+						selectedPublications.map((publication) => (
+							<div class="publication">
+
+								<p class="year">
+									{publication.year}
+								</p>
+
+								<div>
+									<h3>
+										{publication.title}
+									</h3>
+
+									<p class="publication-authors">
+										{publication.authors}
+									</p>
+
+									<p class="publication-venue">
+										{publication.venue}
+									</p>
+								</div>
+
+							</div>
+						))
+					}
+
+				</div>
+
+				<a href="/publications" class="text-link">
+					All publications →
+				</a>
+			</div>
+		</section>
+
+	</main>
+</Layout>
+
+
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+		margin: 0;
+		color: #111;
+		background: #fff;
+	}
+
+	a {
+		color: inherit;
+	}
+
+
+	.hero {
+		min-height: calc(100vh - 90px);
+		padding: 14vh 6vw 10vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	.eyebrow {
+		font-size: 14px;
+		letter-spacing: 0.12em;
+		margin: 0 0 32px;
+	}
+
+	h1 {
+		font-size: clamp(64px, 8vw, 130px);
+		line-height: 0.93;
+		letter-spacing: -0.055em;
+		margin: 0;
+		max-width: 1200px;
+	}
+
+	.hero-copy {
+		font-size: clamp(22px, 2vw, 30px);
+		line-height: 1.4;
+		margin-top: 45px;
+	}
+
+
+	.section {
+		padding: 110px 6vw;
+		border-top: 1px solid #ddd;
+		display: grid;
+		grid-template-columns: 220px 1fr;
+		gap: 60px;
+	}
+
+	.section-label {
+		font-size: 13px;
+		line-height: 1.5;
+	}
+
+	.section-label p {
+		margin: 0 0 6px;
+	}
+
+	.section-content {
+		max-width: 1050px;
+	}
+
+	h2 {
+		font-size: clamp(40px, 5vw, 72px);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+		margin: 0 0 50px;
+		max-width: 900px;
+	}
+
+	.large-copy {
+		font-size: clamp(20px, 2vw, 30px);
+		line-height: 1.55;
+		max-width: 900px;
+		margin-bottom: 45px;
+	}
+
+	.text-link {
+		font-size: 16px;
+		text-decoration: none;
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 4px;
+	}
+
+	.text-link:hover {
+		opacity: 0.55;
+	}
+
+
+	.research-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		border-top: 1px solid #bbb;
+		margin-bottom: 50px;
+	}
+
+	.research-grid article {
+		padding: 35px 35px 50px 0;
+		border-bottom: 1px solid #bbb;
+		min-height: 250px;
+	}
+
+	.research-grid article:nth-child(odd) {
+		border-right: 1px solid #bbb;
+	}
+
+	.research-grid article:nth-child(even) {
+		padding-left: 35px;
+	}
+
+	.number {
+		font-size: 13px;
+		margin: 0 0 40px;
+	}
+
+	h3 {
+		font-size: 28px;
+		line-height: 1.15;
+		margin: 0 0 18px;
+	}
+
+	.research-grid article p:last-child {
+		font-size: 17px;
+		line-height: 1.55;
+		max-width: 430px;
+	}
+
+
+	.dark-section {
+		background: #111;
+		color: #fff;
+		border-top: none;
+	}
+
+	.news-list {
+		border-top: 1px solid #555;
+		margin-bottom: 50px;
+	}
+
+	.news-list a {
+		display: grid;
+		grid-template-columns: 130px 1fr 30px;
+		gap: 20px;
+		align-items: center;
+		padding: 28px 0;
+		border-bottom: 1px solid #555;
+		text-decoration: none;
+	}
+
+	.news-list a:hover {
+		opacity: 0.65;
+	}
+
+	.news-list span {
+		font-size: 14px;
+	}
+
+	.news-list strong {
+		font-size: 21px;
+		font-weight: 500;
+	}
+
+	.light-link {
+		color: #fff;
+	}
+
+
+	.publication-list {
+		border-top: 1px solid #bbb;
+		margin-bottom: 50px;
+	}
+
+	.publication {
+		display: grid;
+		grid-template-columns: 130px 1fr;
+		gap: 30px;
+		padding: 30px 0;
+		border-bottom: 1px solid #bbb;
+	}
+
+	.publication .year {
+		font-size: 14px;
+		margin: 4px 0 0;
+	}
+
+	.publication h3 {
+		font-size: 23px;
+		line-height: 1.35;
+		margin: 0 0 10px;
+	}
+
+	.publication-authors {
+		font-size: 15px;
+		line-height: 1.5;
+		margin: 0 0 4px;
+		color: #444;
+	}
+
+	.publication-venue {
+		font-size: 15px;
+		line-height: 1.5;
+		margin: 0;
+		color: #666;
+	}
+
+
+	@media (max-width: 900px) {
+		.hero {
+			min-height: 75vh;
+			padding-top: 12vh;
+		}
+
+		.section {
+			grid-template-columns: 1fr;
+			gap: 40px;
+			padding-top: 80px;
+			padding-bottom: 80px;
+		}
+
+		.research-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.research-grid article:nth-child(odd) {
+			border-right: none;
+		}
+
+		.research-grid article:nth-child(even) {
+			padding-left: 0;
+		}
+	}
+
+
+	@media (max-width: 600px) {
+		.hero {
+			padding-top: 10vh;
+		}
+
+		h1 {
+			font-size: 58px;
+		}
+
+		.news-list a {
+			grid-template-columns: 1fr 30px;
+		}
+
+		.news-list a span:first-child {
+			grid-column: 1 / -1;
+		}
+
+		.publication {
+			grid-template-columns: 1fr;
+			gap: 8px;
+		}
+	}
+</style>

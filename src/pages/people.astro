@@ -1,0 +1,213 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="People | Public Sphere Lab">
+	<main>
+		<section class="people-hero">
+			<h1>People</h1>
+		</section>
+
+		<section class="people-section">
+			<p class="section-title">Principal Investigator</p>
+
+			<div class="pi-profile">
+				<div class="pi-photo">
+					<span>Professor Photo<br />4 : 5</span>
+				</div>
+
+				<div class="pi-info">
+					<h2>Nuri Kim</h2>
+					<p class="role">Professor, KAIST</p>
+
+					<p class="bio">
+						Research interests include political communication,
+						deliberation, intergroup communication, media effects,
+						and public perceptions of emerging technologies.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="people-section">
+			<p class="section-title">Researchers</p>
+
+			<div class="people-grid">
+				<article class="person-card">
+					<div class="member-photo">
+						<span>Member Photo<br />4 : 5</span>
+					</div>
+
+					<h2>Researcher Name</h2>
+					<p class="role">PhD Student</p>
+					<p class="interest">
+						Political Communication · Public Sphere
+					</p>
+				</article>
+
+				<article class="person-card">
+					<div class="member-photo">
+						<span>Member Photo<br />4 : 5</span>
+					</div>
+
+					<h2>Researcher Name</h2>
+					<p class="role">Researcher</p>
+					<p class="interest">
+						Science Communication · Technology
+					</p>
+				</article>
+
+				<article class="person-card">
+					<div class="member-photo">
+						<span>Member Photo<br />4 : 5</span>
+					</div>
+
+					<h2>Researcher Name</h2>
+					<p class="role">Graduate Student</p>
+					<p class="interest">
+						Human–AI Communication
+					</p>
+				</article>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.people-hero {
+		padding: 12vh 6vw 10vh;
+		border-bottom: 1px solid #ddd;
+	}
+
+	h1 {
+		font-size: clamp(64px, 7vw, 110px);
+		line-height: 1.1;
+		letter-spacing: -0.05em;
+		margin: 0;
+	}
+
+	.people-section {
+		padding: 80px 6vw 100px;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.section-title {
+		font-size: 15px;
+		font-weight: 600;
+		margin: 0 0 45px;
+	}
+
+	.pi-profile {
+		display: grid;
+		grid-template-columns: minmax(360px, 420px) minmax(0, 650px);
+		gap: 70px;
+		align-items: center;
+	}
+
+	.pi-photo {
+		width: 100%;
+		max-width: 420px;
+		aspect-ratio: 4 / 5;
+		background: #e8e8e8;
+		border: 1px solid #d2d2d2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: #777;
+		font-size: 13px;
+		line-height: 1.5;
+	}
+
+	.pi-info h2 {
+		font-size: 34px;
+		line-height: 1.15;
+		margin: 0 0 10px;
+	}
+
+	.role {
+		font-size: 15px;
+		color: #666;
+		margin: 0 0 25px;
+	}
+
+	.bio {
+		font-size: 18px;
+		line-height: 1.65;
+		margin: 0;
+		max-width: 650px;
+	}
+
+	.people-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 30px;
+	}
+
+	.member-photo {
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		background: #e8e8e8;
+		border: 1px solid #d2d2d2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: #777;
+		font-size: 13px;
+		line-height: 1.5;
+	}
+
+	.person-card h2 {
+		font-size: 22px;
+		line-height: 1.2;
+		margin: 20px 0 8px;
+	}
+
+	.person-card .role {
+		margin-bottom: 10px;
+	}
+
+	.interest {
+		font-size: 15px;
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	@media (max-width: 900px) {
+		.pi-profile {
+			grid-template-columns: 320px minmax(0, 1fr);
+			gap: 45px;
+		}
+
+		.people-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 600px) {
+		.people-hero {
+			padding: 8vh 6vw;
+		}
+
+		h1 {
+			font-size: 52px;
+		}
+
+		.people-section {
+			padding: 60px 6vw 75px;
+		}
+
+		.pi-profile {
+			grid-template-columns: 1fr;
+		}
+
+		.pi-photo {
+			max-width: 100%;
+		}
+
+		.people-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
